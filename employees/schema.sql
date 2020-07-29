@@ -10,7 +10,7 @@ id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(30) UNIQUE NOT NULL
 );
 
-CREATE TABLE roles
+CREATE TABLE role
 (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30) UNIQUE NOT NULL,
@@ -19,19 +19,19 @@ CREATE TABLE roles
     FOREIGN KEY (department_id) REFERENCES department(id)
 );
 
-CREATE TABLE employees
+CREATE TABLE employee
 (
   id INT NOT NULL AUTO_INCREMENT,
   firstname VARCHAR (30) NOT NULL,
   lastname VARCHAR (30) NOT NULL,
   role_id INT,
   manager_id INT,
-  PRIMARY KEY(id),
-  
+  PRIMARY KEY(id), REFERENCES employee(id)
+
 FOREIGN KEY
-(role_id) REFERENCES role(id),
+(role_id) REFERENCES employee (id),
 FOREIGN KEY,
-(manager_id) REFERENCES role(id)
+(manager_id) REFERENCES department (id)
 );
 
 

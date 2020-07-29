@@ -34,4 +34,13 @@ function viewAllDepartments() {
     console.log("add code to view departments");
     employeeRouter();
 }
+
+function viewEmployeesByDepartment() {
+    console.log("add code to view employees by department");
+    employeeRouter();
+}
+
+
+
+
 employeeRouter();
