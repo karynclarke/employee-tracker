@@ -26,17 +26,17 @@ async function employeeRouter() {
 }
 
 function viewAllEmployees() {
-    console.log("add code to view employees")
+    console.log("add code to view Employees")
     employeeRouter();
 }
 
 function viewAllDepartments() {
-    console.log("add code to view departments");
+    console.log("add code to view Departments");
     employeeRouter();
 }
 
 function viewEmployeesByDepartment() {
-    console.log("add code to view employees by department");
+    console.log("add code to view Employees by Department");
     employeeRouter();
 }
 

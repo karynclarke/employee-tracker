@@ -1,25 +1,97 @@
+DROP DATABASE IF EXISTS employees_DB;
 
-INSERT INTO employees
-    (firstname, lastname, role, department, salary, manager)
-VALUES
-    ("Anne", "Lewis", "Producer", "News", "65000", "Coral Wilson");
+CREATE DATABASE employees_DB;
 
-INSERT INTO employees 
-    (firstname, lastname, role, department, salary, manager) 
-VALUES
-    ("Nathan", "Baker", "Director", "Production", "70000","Jake Carter");
+USE employees_DB;
 
-INSERT INTO employees
-    (firstname, lastname, role, department, salary, manager)
-VALUES
-    ("Gabe", "Johnson", "Engineer", "Operations", "85000", "Ed White");   
+CREATE TABLE department
+(
+    id INT NOT NULL
+    AUTO_INCREMENT,
+    name VARCHAR
+    (30),
+    PRIMARY KEY
+    (id)
+);
+    INSERT INTO department
+        (name)
+    VALUE
+    ("Engineeering");
+    INSERT INTO department
+        (name)
+    VALUE
+    ("News");
+    INSERT INTO department
+        (name)
+    VALUE
+    ("Operations");
+    INSERT INTO department
+        (name)
+    VALUE
+    ("Production");
+    INSERT INTO department
+        (name)
+    VALUE
+    ("Sales");
 
-INSERT INTO employees
-(firstname, lastname, role, department, salary, manager)
-VALUES
-    ("Lucy", "Richardson",  "Editor", "News", "40000", "Coral Wilson");     
+    CREATE TABLE role
+    (
+        id INT NOT NULL
+        AUTO_INCREMENT,
+    title VARCHAR
+        (30),
+    salary DECIMAL,
+    department_id INT,
+    PRIMARY KEY
+        (id)
+);
+        INSERT INTO role
+            (title)
+        VALUE
+        ("Account Manager");
+        INSERT INTO role
+            (title)
+        VALUE
+        ("Director");
+        INSERT INTO role
+            (title)
+        VALUE
+        ("Editor");
+        INSERT INTO role
+            (title)
+        VALUE
+        ("Engineer");
+        INSERT INTO role
+            (title)
+        VALUE
+        ("Manager");
+        INSERT INTO role
+            (title)
+        VALUE
+        ("Producer");
 
+        CREATE TABLE employee
+        (
+            id INT NOT NULL
+            AUTO_INCREMENT,
+    first_name VARCHAR
+            (30),
+    last_name VARCHAR
+            (30),
+    PRIMARY KEY
+            (id)
+);
 
-
-
-
+            INSERT INTO employee
+                (first_name, last_name)
+            VALUE
+            ("Anne",
+            "Lewis"
+            );
+            INSERT INTO employee
+                (first_name, last_name)
+            VALUE
+            ("Nathan",
+            "Baker"
+            ); 
+  
