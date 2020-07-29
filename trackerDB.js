@@ -13,7 +13,7 @@
 //     user: "root",
 
 //     // Your password
-//     password: "1021Hilyard!",
+//     password: "",
 //     database: "tracker_DB",
 // });
 
