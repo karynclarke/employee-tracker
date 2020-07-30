@@ -4,68 +4,45 @@ CREATE DATABASE employees_DB;
 
 USE employees_DB;
 
-CREATE TABLE department
-(
-id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(30) UNIQUE NOT NULL
-);
 
-CREATE TABLE role
-(
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(30) UNIQUE NOT NULL,
-    salary DECIMAL NOT NULL,
-    department_id INT NOT NULL,
-    FOREIGN KEY (department_id) REFERENCES department(id)
-);
-
-CREATE TABLE employee
-(
-  id INT NOT NULL AUTO_INCREMENT,
-  firstname VARCHAR (30) NOT NULL,
-  lastname VARCHAR (30) NOT NULL,
-  role_id INT,
-  manager_id INT,
-  PRIMARY KEY(id), REFERENCES employee(id)
-
-FOREIGN KEY
-(role_id) REFERENCES employee (id),
-FOREIGN KEY,
-(manager_id) REFERENCES department (id)
-);
-
-
-
-
-
+-- DEPARTMENT TABLE
 
 CREATE TABLE department
 (
-    id INT NOT NULL AUTO_INCREMENT,
+    id INT
+    UNSIGNED NOT NULL AUTO_INCREMENT,
     name VARCHAR
-(30),
+    (30),
     PRIMARY KEY
-(id)
+    (id)
 );
 
+
+--- ROLE TABLE
 CREATE TABLE role
 (
-    id INT NOT NULL AUTO_INCREMENT,
+    id INT NOT NULL
+    AUTO_INCREMENT,
     title VARCHAR
-(30),
+    (30),
     salary DECIMAL,
-    department_id INT,
-    PRIMARY KEY
-(id)
-);
+    department_id INT UNSIGNED NOT NULL,
+ --   FOREIGN KEY (department_id) REFERENCES department(id)
+	CONSTRAINT fk_department FOREIGN KEY
+    (department_id) REFERENCES department
+    (id) ON
+    DELETE CASCADE,
+	PRIMARY KEY(id)
+    );
 
+
+--- EMPLOYEE TABLE
 CREATE TABLE employee
 (
-    id INT NOT NULL AUTO_INCREMENT,
-    first_name VARCHAR
-(30),
-    last_name VARCHAR
-(30),
-    PRIMARY KEY
-(id)
+    first_name VARCHAR(30),
+    last_name VARCHAR(30),
+    title VARCHAR (30),
+    department VARCHAR (30),
+    salary INT (10)
 );
+ 
