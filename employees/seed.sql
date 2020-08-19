@@ -1,31 +1,10 @@
 -- SEED DEPARTMENT DATA
 
 
-INSERT INTO department
+INSERT INTO department(name)
     (name)
-VALUE
-("Engineeering");
-
-INSERT INTO department
-    (name)
-VALUE
-("News");
-
-INSERT INTO department
-    (name)
-VALUE
-("Operations");
-
-INSERT INTO department
-    (name)
-VALUE
-("Production");
-
-INSERT INTO department
-    (name)
-VALUE
-("Sales");
-
+VALUES ("Engineeering"), ("News"),("Operations"),
+("Production"), ("Sales");
 
 --SEED ROLE DATA
 
@@ -33,38 +12,69 @@ VALUE
 INSERT INTO role
     (title, salary, department_id )
 VALUE
-("TECH",
-80000,
+("ANCHOR",
+100000,
 1
 );
 
 
 INSERT INTO role
     (title, salary, department_id )
-VALUE
-("Anchor",
-100000,
+VALUES
+("DIRECTOR",
+80000,
 2
 );
 
-
-
-INSERT INTO employee
-    (first_name, last_name, title, department, salary)
+INSERT INTO role
+    (title, salary, department_id )
 VALUE
-("Anne",
-"Lewis",
-"Producer",
-"News",
-"50000"
+("EDITOR",
+50000,
+3
 );
 
-INSERT INTO employee
-    (first_name, last_name, title, department, salary)
+INSERT INTO role
+    (title, salary, department_id )
 VALUE
-("Nathan",
-"Baker",
-"Tech",
-"Engineering",
-"75000"
+("ENGINEER",
+90000,
+4
 );
+
+INSERT INTO role
+    (title, salary, department_id )
+VALUE
+("PHOTOGRAPHER",
+80000,
+4
+);
+
+INSERT INTO role
+    (title, salary, department_id )
+VALUE
+("PRODUCER",
+60000,
+5
+);
+
+INSERT INTO role
+    (title, salary, department_id )
+VALUE
+("SALES",
+125000,
+6
+)
+
+INSERT INTO employees
+    (first_name, last_name, role_id)
+VALUES
+    ("Tina", "Fey", 5),
+    ("Alec", "Baldwin", 6),
+    ("Jane", "Krakowski", 1),
+    ("Tracy", "Morgan", 1),
+    ("Jack", "McBrayer", 3),
+    ("Scott", "Adsit", 2),
+    ("Judah", "Freidlander", 4),
+    ("Katrina", "Bowden", 4)
+
