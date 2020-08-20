@@ -73,7 +73,7 @@ function Role_Prompts() {
         .then((answer) => {
             switch (answer.rolesMenu) {
                 case "View All Positions":
-                    Find_All_Roles();
+                    View_All_Roles();
                     break;
                 case "Add a New Position":
                     See_Role();
@@ -108,21 +108,21 @@ function Department_Prompts() {
 //works 8/19/2020
 function View_All_Employees() {
     console.log("Here are your employees:");
-    DB.findAllEmployees().then(function(response) {
+    DB.viewAllEmployees().then(function(response) {
         printTable(response);
         mainMenu();
     });
 }
 const View_All_Departments = () => {
     console.log("Here are the departments:");
-    DB.findAllDepartments().then(function(res) {
+    DB.viewAllDepartments().then(function(res) {
         printTable(res);
         mainMenu();
     });
 };
 const View_All_Roles = () => {
     console.log("Here are the positions:");
-    DB.findAllRoles().then((data) => {
+    DB.viewAllRoles().then((data) => {
         printTable(data);
         mainMenu();
     });
@@ -167,7 +167,7 @@ const Add_Department = () => {
         });
 };
 async function Add_Role() {
-    const departments = await DB.findAllDepartments();
+    const departments = await DB.viewAllDepartments();
 
     const departmentChoices = departments.map(({ id, name }) => ({
         name: name,
@@ -208,7 +208,7 @@ async function Add_Role() {
         });
 }
 async function Add_Employee() {
-    const roles = await DB.findAllRoles();
+    const roles = await DB.viewAllRoles();
     console.log(roles)
         //makes the array of roles grow as we add new roles
     const roleChoices = roles.map(({ id, title }) => ({
