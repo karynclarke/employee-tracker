@@ -107,21 +107,21 @@ function Department_Prompts() {
 }
 //works 8/19/2020
 function View_All_Employees() {
-    console.log("Here is your full roster of employees");
+    console.log("Here are your employees:");
     DB.findAllEmployees().then(function(response) {
         printTable(response);
         mainMenu();
     });
 }
 const View_All_Departments = () => {
-    console.log("Here are the active departments:");
+    console.log("Here are the departments:");
     DB.findAllDepartments().then(function(res) {
         printTable(res);
         mainMenu();
     });
 };
 const View_All_Roles = () => {
-    console.log("Here are the current roles for your organization");
+    console.log("Here are the positions:");
     DB.findAllRoles().then((data) => {
         printTable(data);
         mainMenu();
@@ -145,8 +145,7 @@ async function List_Employees_By_Department() {
             console.log(response.departmentChoice);
             DB.listEmployeesByDepartment().then(function(response) {
                 printTable(response);
-                //currently getting all employees.  Need to use Where?
-                //pausing this one, to do roles by Department.
+
             });
         });
 }
