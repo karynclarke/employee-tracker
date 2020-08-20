@@ -76,7 +76,7 @@ function Role_Prompts() {
                     View_All_Roles();
                     break;
                 case "Add a New Position":
-                    See_Role();
+                    Add_Role();
                     break;
                 default:
                     goodBye();
@@ -149,26 +149,37 @@ async function List_Employees_By_Department() {
             });
         });
 }
-
+// console.log(" this in the index outside of employees")
 //for adding stuff
 
-const Add_Department = () => {
+async function Add_Department() {
+    const departments = await DB.viewAllDepartments();
+    const departmentChoices = departments.map(({ id, name }) => ({
+        name: name,
+        value: id,
+    }));
+
     inquirer
         .prompt([{
             type: "input",
             name: "departmentName",
             message: "What is the name of the new department?",
+            validate: (answer) => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please do not leave this field blank";
+            },
         }, ])
-        .then(function(answer) {
-            DB.createDepartment(answer.departmentName).then((response) => {
+        .then(function(answers) {
+            DB.addDepartment(answers.departmentName).then((response) => {
                 console.log(response);
                 View_All_Departments();
-            });
+            })
         });
-};
+}
 async function Add_Role() {
     const departments = await DB.viewAllDepartments();
-
     const departmentChoices = departments.map(({ id, name }) => ({
         name: name,
         value: id,
@@ -177,7 +188,13 @@ async function Add_Role() {
         .prompt([{
                 type: "input",
                 name: "title",
-                message: "what is the title for this role?",
+                message: "what is the title for this postion?",
+                validate: (answer) => {
+                    if (answer !== "") {
+                        return true;
+                    }
+                    return "Please do not leave this field blank";
+                },
             },
             {
                 type: "input",
@@ -194,12 +211,12 @@ async function Add_Role() {
             {
                 type: "list",
                 name: "departmentID",
-                message: "Which department is assigned this position",
+                message: "Which department is assigned this position?",
                 choices: departmentChoices,
             },
         ])
         .then((answers) => {
-            DB.createRole(answers.title, answers.salary, answers.departmentID).then(
+            DB.addRole(answers.title, answers.salary, answers.departmentID).then(
                 function(response) {
                     console.log(response);
                     View_All_Roles();
@@ -209,7 +226,7 @@ async function Add_Role() {
 }
 async function Add_Employee() {
     const roles = await DB.viewAllRoles();
-    console.log(roles)
+    console.log("roles")
         //makes the array of roles grow as we add new roles
     const roleChoices = roles.map(({ id, title }) => ({
         name: title,
@@ -247,7 +264,7 @@ async function Add_Employee() {
             },
         ])
         .then(function(answers) {
-            DB.createEmployee(
+            DB.addEmployee(
                 answers.firstName,
                 answers.lastName,
                 answers.roleID
@@ -262,4 +279,5 @@ function goodBye() {
     console.log("Good-bye!");
     process.exit();
 }
+
 mainMenu();

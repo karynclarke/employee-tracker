@@ -14,6 +14,7 @@ class DB {
         return this.connection.query("SELECT * FROM role");
     }
 
+
     addDepartment(name) {
         return this.connection.query("INSERT INTO department SET ?", {
             name: name,
